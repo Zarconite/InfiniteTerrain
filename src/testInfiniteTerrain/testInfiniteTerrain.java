@@ -8,7 +8,7 @@ public class testInfiniteTerrain {
 
 	@Test
 	 public void Look() {
-		assertEquals(Main.look(), "You find x");
+		assertEquals(Main.look(), "<You have a GPS and can use 'north', 'south', 'east', 'west' to move>");
 
     }
 

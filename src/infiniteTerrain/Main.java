@@ -1,6 +1,9 @@
 package infiniteTerrain;
 
 import infiniteTerrain.Map;
+
+import java.util.Scanner;
+
 import infiniteTerrain.Encounter;
 
 public class Main {
@@ -14,6 +17,13 @@ public class Main {
 		
 		for(Encounter encountersPrint:Encounter.encountersList) { //temporary to ensure all encounters print via the overridden toString() method in Encounter
 			System.out.println(encountersPrint.toString());
+		}
+		
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("<Welcome message telling you to type 'look'>");
+		String Input = scanner.next();
+		if(Input=="look") {
+			look();
 		}
 		
 	}
@@ -33,6 +43,12 @@ public class Main {
 		Encounter.encountersList.add(WitchesHouse);
 		Encounter.encountersList.add(Dragon);
 		Encounter.encountersList.add(SlipperySlope);
+	}
+	
+	public static void look() {
+		
+		System.out.println("<You have a GPS and can use 'north', 'south', 'east', 'west' to move>");
+		
 	}
 
 }
