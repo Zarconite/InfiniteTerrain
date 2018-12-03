@@ -15,17 +15,23 @@ public class Main {
 		
 		addEncounters();
 		
-		for(Encounter encountersPrint:Encounter.encountersList) { //temporary to ensure all encounters print via the overridden toString() method in Encounter
+		/*for(Encounter encountersPrint:Encounter.encountersList) { //temporary to ensure all encounters print via the overridden toString() method in Encounter
 			System.out.println(encountersPrint.toString());
-		}
-		
+		}*/
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("<Welcome message telling you to type 'look'>");
-		String Input = scanner.next();
-		if(Input=="look") {
-			look();
+		String inputCommand = scanner.nextLine();
+		if(inputCommand.toLowerCase().equals("look")) {
+			System.out.println("<You have a GPS and can use 'north', 'south', 'east', 'west' to move. You can type 'use' to check the location of the nearest encounter>");
 		}
 		
+		while (Game.alive) {
+		inputCommand = scanner.nextLine();
+		if(inputCommand.toLowerCase().equals("use")) {
+			System.out.println(use());
+		}
+		}
+		scanner.close();
 	}
 	
 	public static void addEncounters() {
@@ -45,10 +51,10 @@ public class Main {
 		Encounter.encountersList.add(SlipperySlope);
 	}
 	
-	public static void look() {
+	public static String use() {
 		
-		System.out.println("<You have a GPS and can use 'north', 'south', 'east', 'west' to move>");
 		
+		return "<You check your GPS: ";
 	}
 
 }

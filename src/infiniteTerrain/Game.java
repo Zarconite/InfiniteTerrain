@@ -12,6 +12,7 @@ public class Game {
 	public int currentYPos;
 	public int Mana=100; //bad encounter could reduce mana, then eventually health
 	public int Health=100; //good encounter could add health / mana back
+	public static boolean alive=true;
 	
 	public static ArrayList<Encounter> encountersList = new ArrayList<Encounter>();
 	
