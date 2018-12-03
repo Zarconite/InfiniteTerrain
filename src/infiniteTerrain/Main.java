@@ -10,10 +10,12 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		infiniteTerrain.Map gameMap = new Map();
 		//For loop to show grid position +5 spaces and -5 spaces in any direction? ie: 11x11 grid
 		
-		addEncounters();
+		Game.addEncounters();
+		
+		int xPosition = Map.Size/2;
+		int yPosition = Map.Size/2;
 		
 		/*for(Encounter encountersPrint:Encounter.encountersList) { //temporary to ensure all encounters print via the overridden toString() method in Encounter
 			System.out.println(encountersPrint.toString());
@@ -24,37 +26,58 @@ public class Main {
 		if(inputCommand.toLowerCase().equals("look")) {
 			System.out.println("<You have a GPS and can use 'north', 'south', 'east', 'west' to move. You can type 'use' to check the location of the nearest encounter>");
 		}
+		//Map.addTheEncounters();
+		infiniteTerrain.Map gameMap = new Map();
+		gameMap.populateSquares((Map.Size*Map.Size)/2);
 		
 		while (Game.alive) {
 		inputCommand = scanner.nextLine();
+		
+		if(inputCommand.toLowerCase().equals("north")) {
+			yPosition++;
+			System.out.println(SquareText(xPosition,yPosition));
+		}
+		if(inputCommand.toLowerCase().equals("east")) {
+			xPosition++;
+			System.out.println(SquareText(xPosition,yPosition));
+		}
+		if(inputCommand.toLowerCase().equals("south")) {
+			yPosition--;
+			System.out.println(SquareText(xPosition,yPosition));
+		}
+		if(inputCommand.toLowerCase().equals("west")) {
+			xPosition--;
+			System.out.println(SquareText(xPosition,yPosition));
+		}
+		
 		if(inputCommand.toLowerCase().equals("use")) {
 			System.out.println(use());
+			//System.out.println(Encounter.encountersList.get(2)); hopefully this will be something like Encounter.encountersList.get(Map[0][0][xPos][yPos])
+			
+		}
+		if(inputCommand.toLowerCase().equals("test")) {
+			System.out.println(Map.Map[0][0][0][0]);
+			System.out.println(Map.Map[0][0][0][1]);
 		}
 		}
 		scanner.close();
 	}
 	
-	public static void addEncounters() {
-		
-		Encounter TreasureChest = new Encounter("You found a treasure chest, contained within it was a health potion!", false, 0, 25);
-		Encounter PitfallTrap = new Encounter("You accidentally stumbled into a trap and fell!", true, 0, -10);
-		Encounter WildAnimals = new Encounter("A pack of animals tried to attack you, however you managed to fend them off with your magic.", true, -10, 0);
-		Encounter WitchesHouse = new Encounter("A strange magical hut lies before you, upon looting it you find five mana potions!", false, 50, 0);
-		Encounter Dragon = new Encounter("A dragon suddenly swoops down out of nowhere and blasts you with fire! Your mana protects you from some of the damage but it still singes you.", true, -30, -10);
-		Encounter SlipperySlope = new Encounter("You reach a large hill with a shiny golden chest at the very top! You attempt to scale the hill but end up slipping about half way up and fall to the bottom!", true, 0,-10);
-		
-		Encounter.encountersList.add(TreasureChest);
-		Encounter.encountersList.add(PitfallTrap);
-		Encounter.encountersList.add(WildAnimals);
-		Encounter.encountersList.add(WitchesHouse);
-		Encounter.encountersList.add(Dragon);
-		Encounter.encountersList.add(SlipperySlope);
-	}
+
 	
 	public static String use() {
 		
 		
 		return "<You check your GPS: ";
+	}
+	
+	public static String SquareText(int xPosition, int yPosition) {
+		if(Map.Map[0][0][xPosition][yPosition]==null) {
+			return "Barren Wasteland";
+		}
+		else {
+		return String.valueOf(Encounter.encountersList.get(Integer.parseInt(Map.Map[0][0][xPosition][yPosition])));
+		}
 	}
 
 }
