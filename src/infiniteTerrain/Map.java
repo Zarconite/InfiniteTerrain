@@ -2,7 +2,6 @@ package infiniteTerrain;
 
 import java.util.Random;
 
-
 public class Map extends Game {
 
 	//Attributes

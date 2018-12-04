@@ -18,7 +18,7 @@ public class Encounter extends Square {
 		this.manaModifier = vManaModifier;
 		this.healthModifier = vHealthModifier;
 	}
-	
+
 	
 	//Methods
 		

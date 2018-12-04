@@ -8,7 +8,7 @@ public class Square extends Map {
 	
 	
 	//Constructors
-	
+
 	
 	
 	//Methods

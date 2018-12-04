@@ -8,31 +8,31 @@ public class testInfiniteTerrain {
 
 	@Test
 	 public void Look() {
-		assertEquals(Main.look(), "<You have a GPS and can use 'north', 'south', 'east', 'west' to move>");
+		assertEquals("look", "<You have a GPS and can use 'north', 'south', 'east', 'west' to move>");
 
     }
 
 	@Test
 	 public void MoveNorth() {
-		assertEquals(Main.MoveNorth(), "You find x");
+		assertEquals("north", "You find x");
 
    }
 	
 	@Test
 	 public void MoveEast() {
-		assertEquals(Main.MoveEast(), "You find x");
+		assertEquals("east", "You find x");
 
   }
 	
 	@Test
 	 public void MoveSouth() {
-		assertEquals(Main.MoveSouth(), "You find x");
+		assertEquals("south", "You find x");
 
   }
 	
 	@Test
 	 public void MoveWest() {
-		assertEquals(Main.MoveWest(), "You find x");
+		assertEquals("west", "You find x");
 
   }
 	
