@@ -3,13 +3,13 @@ package infiniteTerrain;
 import java.util.Random;
 
 public class Map extends Game {
-
+	
 	//Attributes
 	private int numberOfEncounters;
-	public static int Size=500;
-	public static String[][][][] Map = new String[1][1][Size][Size];//temporarily set the chunk pos to be 0
-	private int xMapSpaces = (Size/2); //x Starting position would be in the middle of the map
-	private int yMapSpaces = (Size/2); //Same for Y
+	public static int size=500;
+	public static String[][][][] Map = new String[1][1][size][size];//temporarily set the chunk pos to be 0
+	private int xMapSpaces = (size/2); //x Starting position would be in the middle of the map
+	private int yMapSpaces = (size/2); //Same for Y
 	private int xPos;
 	private int yPos;
 	private boolean encounterTrue = false;
@@ -23,7 +23,7 @@ public class Map extends Game {
 	// Constructors
 
 	public Map() { 
-		this.numberOfEncounters=((int)((Size*Size)/8)); //12.5% chance of an encounter per tile
+		this.numberOfEncounters=((int)((size*size)/8)); //12.5% chance of an encounter per tile
 		
 	}
 	
@@ -40,8 +40,8 @@ public class Map extends Game {
 			{
 
 			/* Run a while loop to ensure an encounter isn't already in the generated location */
-					xPos = randomGen.nextInt(Size);
-					yPos = randomGen.nextInt(Size);
+					xPos = randomGen.nextInt(size);
+					yPos = randomGen.nextInt(size);
 					
 					if(Map[0][0][xPos][yPos]== null) 
 					{
@@ -50,6 +50,13 @@ public class Map extends Game {
 						encounterTrue=true;
 						Map[0][0][xPos][yPos] = String.valueOf(encounterType);
 					}
+			}
+			for(int j=0; j<size; j++) {
+				for(int k=0; k<size; k++) {
+					if(Map[0][0][j][k]== null) {
+						Map[0][0][j][k]=(" "+randomGen.nextInt(9));
+					}
+				}
 			}
 	}
 	
