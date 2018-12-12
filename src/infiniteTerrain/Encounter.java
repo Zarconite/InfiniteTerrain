@@ -9,6 +9,13 @@ public class Encounter extends Square {
 	int encounterID;
 	int manaModifier;
 	int healthModifier;
+	String goodEncounter = "Lucky you! Good encounter: ";
+	String badEncounter = "Oh no! Bad encounter: ";
+	String lose = ". You lose: ";
+	String gain = ". You gain: ";
+	String health = " health!";
+	String mana = " mana!";
+	String manaAsWellAs = " mana as well as: ";
 	
 	//Constructors
 	
@@ -19,37 +26,38 @@ public class Encounter extends Square {
 		this.healthModifier = vHealthModifier;
 	}
 
-	
+
 	//Methods
-		
+	
+	@Override
 	public String toString() {
 		
 		if(isBadEncounter) {
 			if(manaModifier<0&&healthModifier<0) {
-				return ("Oh no! Bad encounter: " + this.description + ". You lose: " + manaModifier + " mana as well as: " + healthModifier + " health!");
+				return (badEncounter + this.description + lose + manaModifier + manaAsWellAs + healthModifier + health);
 			}
 			else if(manaModifier<0) {
-				return ("Oh no! Bad encounter: " + this.description + ". You lose: " + manaModifier + " mana!");	
+				return (badEncounter + this.description + lose + manaModifier + mana);	
 			}
 			else if(healthModifier<0){
-				return ("Oh no! Bad encounter: " + this.description + ". You lose: " + healthModifier+ " health!");	
+				return (badEncounter + this.description + lose + healthModifier+ health);	
 			}
 			else {
-				return ("Oh no! Bad encounter: " + this.description + ". But luckily you don't lose any mana or health!");
+				return (badEncounter + this.description + ". But luckily you don't lose any mana or health!");
 			}
 		}
 		else {
 			if(manaModifier>0&&healthModifier>0) {
-				return ("Lucky you! Good encounter: " + this.description + ". You gain: " + manaModifier + " mana as well as: " + healthModifier + " health!");
+				return (goodEncounter + this.description + gain + manaModifier + manaAsWellAs + healthModifier + health);
 			}
 			else if(manaModifier>0) {
-				return ("Lucky you! Good encounter: " + this.description + ". You gain: " + manaModifier + " mana!");	
+				return (goodEncounter + this.description + gain + manaModifier + mana);	
 			}
 			else if(healthModifier>0){
-				return ("Lucky you! Good encounter: " + this.description + ". You gain: " + healthModifier+ " health!");	
+				return (goodEncounter + this.description + gain + healthModifier+ health);	
 			}
 			else {
-				return ("Lucky you! Good encounter: " + this.description + ". However you don't gain any mana or health!");
+				return (goodEncounter + this.description + ". However you don't gain any mana or health!");
 			}	
 		}
 	}
